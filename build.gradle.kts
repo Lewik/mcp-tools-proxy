@@ -1,3 +1,5 @@
+import java.io.ByteArrayOutputStream
+
 plugins {
     kotlin("multiplatform") version "2.0.0-RC3"
     kotlin("plugin.serialization") version "2.0.0-RC3"
@@ -6,7 +8,9 @@ plugins {
 }
 
 group = "dev.lewik.mcptools"
-version = "0.1.2"
+
+// also update version in jbang-catalog.json
+version = "0.1.4"
 
 repositories {
     mavenCentral()
@@ -120,7 +124,39 @@ tasks.named("build") {
     dependsOn(tasks.shadowJar)
 }
 
+tasks.register("checkReleaseReady") {
+    doLast {
+        // check git status clean
+        exec {
+            commandLine("git", "diff", "--quiet")
+        }
+        exec {
+            commandLine("git", "diff", "--cached", "--quiet")
+        }
+
+        // check everything is pushed
+        val revsAhead = ByteArrayOutputStream()
+        exec {
+            commandLine("git", "rev-list", "--count", "@{u}..HEAD")
+            standardOutput = revsAhead
+        }
+        if (revsAhead.toString().trim() != "0") {
+            throw GradleException("You have local commits that are not pushed to origin.")
+        }
+
+        // check jbang-catalog.json contains a correct version
+        val catalogFile = file("jbang-catalog.json")
+        val expectedScriptRef =
+            "https://github.com/Lewik/mcp-tools-proxy/releases/download/v$version/mcp-tools-proxy.jar"
+        val content = catalogFile.readText()
+        if (!content.contains("\"script-ref\": \"$expectedScriptRef\"")) {
+            throw GradleException("jbang-catalog.json does not contain exact script-ref: $expectedScriptRef")
+        }
+    }
+}
+
 tasks.register<Exec>("githubRelease") {
+    dependsOn("checkReleaseReady")
     dependsOn("releaseJar")
 
     doFirst {
