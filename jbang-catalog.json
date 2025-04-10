@@ -1,0 +1,8 @@
+{
+  "aliases": {
+    "proxy": {
+      "description": "MCP Tools Proxy CLI",
+      "script-ref": "https://github.com/Lewik/mcp-tools-proxy/releases/download/v0.1.0/mcp-tools-proxy.jar"
+    }
+  }
+}
