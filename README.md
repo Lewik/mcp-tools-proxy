@@ -1,6 +1,7 @@
-# MCP Tools Proxy
+# MCP Tools Proxy - MCP Tools Filter
 
-A configurable proxy for Model Context Protocol (MCP) tool filtering. This proxy allows you to control which MCP tools are available to AI assistants.
+A configurable proxy for Model Context Protocol (MCP) tool filtering.
+This proxy acts as a filter that allows you to control which MCP tools are available to AI assistants.
 
 ## Features
 
