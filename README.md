@@ -24,7 +24,7 @@ To use this proxy with an MCP client (e.g., Cursor), configure the client to use
     "default": {
       "command": "jbang",
       "args": [
-        "Lewik/mcp-tools-proxy@proxy", 
+        "mcpproxy@lewik/mcp-tools-proxy", 
         "--upstream", "npx -y @anthropic-ai/mcp-server", 
         "--allow", "list_files_in_folder", 
         "--allowre", "get_.*"

@@ -10,7 +10,7 @@ plugins {
 group = "dev.lewik.mcptools"
 
 // also update version in jbang-catalog.json
-version = "0.1.4"
+version = "0.1.5"
 
 repositories {
     mavenCentral()
