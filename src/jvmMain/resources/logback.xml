@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!-- Write logs to file -->
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>${java.io.tmpdir}/mcp-tools-proxy.log</file>
+        <append>true</append>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Root logger to file only -->
+    <root level="INFO">
+        <appender-ref ref="FILE" />
+    </root>
+
+    <!-- Set logging level for our package -->
+    <logger name="io.mcptools.proxy" level="INFO" />
+    
+    <!-- Set logging level for SDK -->
+    <logger name="io.modelcontextprotocol.kotlin.sdk" level="INFO" />
+</configuration> 

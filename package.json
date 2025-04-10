@@ -1,0 +1,21 @@
+{
+  "name": "mcp-tools-proxy",
+  "version": "0.1.0",
+  "description": "MCP Tools Proxy for filtering MCP tools",
+  "main": "build/dist/js/productionExecutable/mcp-tools-proxy.js",
+  "bin": {
+    "mcp-tools-proxy": "build/dist/js/productionExecutable/mcp-tools-proxy.js"
+  },
+  "scripts": {
+    "build": "gradle jsNodeProductionExecutable",
+    "start": "node build/dist/js/productionExecutable/mcp-tools-proxy.js"
+  },
+  "keywords": [
+    "mcp",
+    "tool",
+    "proxy",
+    "filter"
+  ],
+  "author": "",
+  "license": "MIT"
+} 
