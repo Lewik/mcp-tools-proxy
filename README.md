@@ -1,3 +1,9 @@
+> **Note:** I believe **all MCP clients should support tool filtering as a built-in feature** — it’s a fundamental part of safety and control.  
+> Until that’s the case, **this proxy can help**.
+
+---
+
+
 # MCP Tools Proxy - MCP Tools Filter
 
 A configurable proxy for Model Context Protocol (MCP) tool filtering.
